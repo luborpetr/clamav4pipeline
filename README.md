@@ -3,8 +3,8 @@ The `clamav-scanner` is a command line tool which can be used to run ClamAV anti
 The latest `clamav-scanner` docker image contains latest virus database that is updated twice a day.
 
 
-##Usage
-###Docker
+## Usage
+### Docker
 ```
 # Directory to be scanned
 SCAN_DIR=/tmp
@@ -15,6 +15,6 @@ docker run -v $SCAN_DIR/:/workdir/:ro \
            -it --rm clamav-scanner:latest \
            scan.sh -d /workdir -l /output/log
 ```
-###GitLab CI/CD
+### GitLab CI/CD
 
-###GitHub Actions
+### GitHub Actions
