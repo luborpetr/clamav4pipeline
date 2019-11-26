@@ -1,11 +1,11 @@
-# clamav-scanner
-The `clamav-scanner` is a command line tool which can be used to run ClamAV antivirus scan on top of specified directory.
-The latest `clamav-scanner` docker image contains latest virus database that is updated twice a day.
+# clamav4pipeline
+The `clamav4pipeline` is a command line tool which can be used to run ClamAV antivirus scan on top of specified directory.
+The latest `clamav4pipeline` docker image contains latest virus database that is updated twice a day.
 
 ## Behaviour
-When the `clamav-scanner` is executed the scan progress is printed to the standard out.
+When the `clamav4pipeline` is executed the scan progress is printed to the standard out.
 Overall report is generated in specified directory at the end of the run.
-The `clamav-scanner` returns exit code `1` when there are infected files `0` otherwise.
+The `clamav4pipeline` returns exit code `1` when there are infected files `0` otherwise.
 
 ## Usage
 ### Docker
@@ -16,7 +16,7 @@ SCAN_DIR=/tmp
 OUTPUT_DIR=/tmp
 docker run -v $SCAN_DIR/:/workdir/:ro \
            -v $OUTPUT_DIR/:/output/:rw \
-           -it --rm clamav-scanner:latest \
+           -it --rm clamav4pipeline:latest \
            scan.sh -d /workdir -l /output/log
 ```
 ### GitLab CI/CD
