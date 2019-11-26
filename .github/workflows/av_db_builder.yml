@@ -1,0 +1,14 @@
+name: AV DB Build Cheduled
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    container: 
+      image: gcr.io/kaniko-project/executor:debug
+    steps:
+    - uses: actions/checkout@v1
+    - name: Run a one-line script
+      run: ls .
