@@ -16,7 +16,7 @@ SCAN_DIR=/tmp
 OUTPUT_DIR=/tmp
 docker run -v $SCAN_DIR/:/workdir/:ro \
            -v $OUTPUT_DIR/:/output/:rw \
-           -it --rm clamav4pipeline:latest \
+           -it --rm thalesgroup/clamav4pipeline:latest \
            scan.sh -d /workdir -l /output/log
 ```
 ### GitLab CI/CD
