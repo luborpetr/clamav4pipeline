@@ -12,7 +12,7 @@ jobs:
     - uses: actions/checkout@v1
     - name: Add GitHub push credentials
       env:
-        REGISTRY_PUSH_TOKEN: ${{ secrets.REGISTRY_PUSH_TOKEN }}
+        REGISTRY_PUSH_TOKEN: ${{ REGISTRY_PUSH_TOKEN }}
       run: echo "{\"auths\":{\"docker.pkg.github.com\":{\"auth\":\"$REGISTRY_PUSH_TOKEN\"}}}" > /kaniko/.docker/config.json
     - run: cat /kaniko/.docker/config.json
     - name: Image build
