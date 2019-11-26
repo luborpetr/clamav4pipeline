@@ -10,5 +10,5 @@ jobs:
       image: gcr.io/kaniko-project/executor:debug
     steps:
     - uses: actions/checkout@v1
-    - name: Run a one-line script
-      run: ls .
+    - run: mkdir /workspace
+    - run:  /kaniko/executor --context . --no-push
