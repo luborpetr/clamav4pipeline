@@ -8,6 +8,6 @@ RUN apk add --no-cache \
     clamav-libunrar
 RUN mkdir "/clamavdb"
 RUN chown 100:101 "/clamavdb"
-RUN /usr/bin/freshclam --datadir="/clamavdb"
+ONBUILD RUN /usr/bin/freshclam --datadir="/clamavdb"
 ENV PATH="/scanner:${PATH}"
 COPY scan.sh ./
