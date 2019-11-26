@@ -10,5 +10,9 @@ jobs:
       image: gcr.io/kaniko-project/executor:debug
     steps:
     - uses: actions/checkout@v1
-    - run: mkdir /workspace
-    - run:  /kaniko/executor --context . --no-push
+    - name: Add GitHub push credentials
+      env:
+        REGISTRY_PUSH_TOKEN: ${{ secrets.REGISTRY_PUSH_TOKEN }}
+      run: echo {"auths": {"docker.pkg.github.com": { "auth": "$REGISTRY_PUSH_TOKEN"}}} > /kaniko/.docker/config.json
+    - name: Image build
+      run:  /kaniko/executor --context . --destination docker.pkg.github.com/luborpetr/clamav4pipeline/clamav4pipeline:latest
