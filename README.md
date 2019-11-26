@@ -20,5 +20,46 @@ docker run -v $SCAN_DIR/:/workdir/:ro \
            scan.sh -d /workdir -l /output/log
 ```
 ### GitLab CI/CD
-
+```
+clamav_scan:
+  variables:
+    SCAN_LOG: "av.log"
+  stage: test
+  dependencies:
+    - install
+  image:
+    name: thalesgroup/clamav4pipeline:latest
+  only:
+    - branches
+    - tags
+    - merge_requests
+  before_script: []
+  script:
+    - scan.sh -d . -l ${SCAN_LOG}
+  artifacts:
+    paths:
+      - ${SCAN_LOG}
+```
 ### GitHub Actions
+```
+clamav_scan:
+    runs-on: [ubuntu-latest]
+    container: 
+      image: thalesgroup/clamav4pipeline:latest
+      
+    steps:
+      - uses: actions/checkout@v1
+      - name: Download build artefact
+        uses: actions/download-artifact@v1
+        with:
+          name: build
+      - name: AV Scan
+        run: scan.sh -d . -l av.log
+      - run: chmod a+r av.log
+      - name: Upload AV scan artefacts
+        uses: actions/upload-artifact@v1
+        with:
+          name: av_scan
+          path: "av.log"
+```
+
