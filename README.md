@@ -49,10 +49,6 @@ clamav_scan:
       
     steps:
       - uses: actions/checkout@v1
-      - name: Download build artefact
-        uses: actions/download-artifact@v1
-        with:
-          name: build
       - name: AV Scan
         run: scan.sh -d . -l av.log
       - run: chmod a+r av.log
