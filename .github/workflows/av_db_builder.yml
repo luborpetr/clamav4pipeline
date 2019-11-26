@@ -18,4 +18,4 @@ jobs:
     - name: Add GitHub push credentials
       run: echo "{\"auths\":{\"https://index.docker.io/v1/\":{\"auth\":\"${{ secrets.REGISTRY_PUSH_TOKEN }}\"}}}" > /kaniko/.docker/config.json
     - name: Image build
-      run:  /kaniko/executor --context . --destination docker.pkg.github.com/luborpetr/clamav4pipeline/clamav4pipeline:latest --reproducible --cleanup
+      run:  /kaniko/executor --context . --destination thalesgroup/chaos-engine:latest --reproducible --cleanup
