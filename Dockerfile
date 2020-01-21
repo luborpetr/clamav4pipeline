@@ -9,12 +9,14 @@ RUN apk add --no-cache \
 RUN mkdir "/clamavdb"
 RUN chown 100:101 "/clamavdb"
 
+COPY db-update.sh ./
+
 # Download latest virus database
-RUN /usr/bin/freshclam --datadir="/clamavdb"
+RUN ./db-update.sh
 
 # Refresh the DB when this image is used as the base for another build.
 # https://docs.docker.com/engine/reference/builder/#onbuild
-ONBUILD RUN /usr/bin/freshclam --datadir="/clamavdb"
+ONBUILD RUN ./db-update.sh
 
 ENV PATH="/scanner:${PATH}"
 COPY scan.sh ./
