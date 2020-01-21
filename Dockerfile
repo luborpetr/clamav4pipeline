@@ -8,7 +8,7 @@ RUN apk add --no-cache \
     clamav-libunrar
 RUN mkdir "/clamavdb"
 RUN chown 100:101 "/clamavdb"
-
+COPY freshclam.conf /etc/clamav/freshclam.conf
 COPY db-update.sh ./
 
 # Download latest virus database

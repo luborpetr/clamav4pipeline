@@ -3,7 +3,7 @@
 MAX_RETRIES=5
 
 function updatedb() {
-	/usr/bin/freshclam --datadir="/clamavdb"
+	/usr/bin/freshclam --datadir="/clamavdb" --config-file=/etc/clamav/freshclam.conf
 }
 
 for (( i=1; i<MAX_RETRIES; i++ ));
