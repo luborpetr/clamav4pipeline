@@ -1,3 +1,5 @@
+![AV DB Build](https://github.com/luborpetr/clamav4pipeline/workflows/AV%20DB%20Build/badge.svg)
+
 # clamav4pipeline
 The `clamav4pipeline` is a command line tool which can be used to run ClamAV antivirus scan on top of specified directory.
 The latest `clamav4pipeline` docker image contains latest virus database that is updated twice a day.
